@@ -1,6 +1,6 @@
 ﻿#!/bin/bash
 
-#Gets current admin username
+#Gets current admin username  from Jamf's parameter 4
 currentadmin="$4"
 
 # Uses dscl to change the account shortname to lapsadmin. 
