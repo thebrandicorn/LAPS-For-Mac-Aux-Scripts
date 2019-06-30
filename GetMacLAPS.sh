@@ -2,6 +2,7 @@
 
 #Hard Coded variables
 apiURL=""
+extAttName="\"LAPS\""
 #Prompted Variables
 apiUser="$(osascript -e "display dialog \"Username:\" default answer \"\"" | cut -c 35-)"
 apiPass="$(osascript -e "display dialog \"Password:\" default answer \"\" with hidden answer" | cut -c 35-)"
@@ -19,7 +20,6 @@ else
 jamfid="serialnumber"
 fi
 
-extAttName="\"LAPS\""
 oldpass=$(curl -s -f -u $apiUser:$apiPass -H "Accept: application/xml" $apiURL/JSSResource/computers/$jamfid/$compid/subset/extension_attributes | xpath "//extension_attribute[name=$extAttName]" 2>&1 | awk -F'<value>|</value>' '{print $2}')
 
 if [ -z "$oldpass" ]
